@@ -9,11 +9,11 @@ PdofCSt.T1or2, PdofCSt.cyc2, and PofCSGt.
 }
 \usage{ PofCSt(theta, T, m, tol = 1e-07) }
 \arguments{
-  \item{theta}{ \code{theta} Vector of statistics (or parameters) from which it is desired to select 
+  \item{theta}{  Vector of statistics (or parameters) from which it is desired to select 
 			the top t of them }
-  \item{T}{ \code{T} The number of statistics (or parameters) desired to be selected }
-  \item{m}{ \code{m} Number of nodes employed in the Gauss-Hermite quadrature }
-  \item{tol}{ \code{tol} Tolerance parameter to set the cut-off level for the inclusion of additional 
+  \item{T}{  The number of statistics (or parameters) desired to be selected }
+  \item{m}{  Number of nodes employed in the Gauss-Hermite quadrature }
+  \item{tol}{  Tolerance parameter to set the cut-off level for the inclusion of additional 
 		probability components in PCS }
 }
 \details{ The analytic formula for computing PCS for t of k populations is an integral whose integrad
@@ -30,6 +30,5 @@ selections. Journal of Statistical Planning and Inference.  72(1-2), 279-290.
 }
 \author{ Jason Wilson, <jason.wilson@biola.edu> }
 \seealso{ \code{\link{PdofCSt.T1or2}}, \code{\link{PdofCSt.cyc2}}, \code{\link{PofCSGt}} }
-\examples{ }
 
 \keyword{ htest }

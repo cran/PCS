@@ -15,16 +15,16 @@ PdofCSt.cyc2(theta, T, d, m = 20, tol = 1e-08)
 PofCSGt(theta, T, Gd, m = 20, tol = 1e-08)
 }
 \arguments{
-  \item{theta}{ \code{theta} Vector of statistics (or parameters) from which it is desired to select 
+  \item{theta}{  Vector of statistics (or parameters) from which it is desired to select 
 			the top t of them }
-  \item{T}{ \code{T} The number of statistics (or parameters) desired to be selected }
-  \item{d}{ \code{d} The d-best selection parameter (scalar) }
-  \item{Gd}{ \code{Gd} The G-best selection parameter (scalar) }
-  \item{m}{ \code{m} Number of nodes employed in the Gauss-Hermite quadrature }
-  \item{tol}{ \code{tol} Tolerance parameter to set the cut-off level for the inclusion of additional 
+  \item{T}{  The number of statistics (or parameters) desired to be selected }
+  \item{d}{  The d-best selection parameter (scalar) }
+  \item{Gd}{  The G-best selection parameter (scalar) }
+  \item{m}{  Number of nodes employed in the Gauss-Hermite quadrature }
+  \item{tol}{  Tolerance parameter to set the cut-off level for the inclusion of additional 
 		probability components in PCS }
 }
-\details{ }
+
 \value{ The probability of correct selection. }
 \references{ 
 Cui, X. and Wilson, J.  2007.  On How to Calculate the Probability of Correct Selection for Large k 
@@ -33,6 +33,5 @@ Populations.  University of California, Riverside Statistics Department Technica
 }
 \author{ Jason Wilson, <jason.wilson@biola.edu> }
 \seealso{ \code{\link{PofCSt}}, \code{\link{PdofCSt.T1or2}}, \code{\link{PdofCSt.cyc2}}, \code{\link{PofCSGt}}  }
-\examples{ }
 
 \keyword{ htest }

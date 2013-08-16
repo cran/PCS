@@ -41,7 +41,7 @@ PdofCSt.cyc2 <- function(theta, T, d, m=20, tol=1e-8) {
 
 
 #Initialization for PdofCSt part of code:
-require(statmod)       #Library for gauss.quad.prob
+#require(statmod)       #Library for gauss.quad.prob
 tol.1=tol; tol.2=tol; tol.3=tol; tol.4=tol   #Set tolerance parameters (PdofCSt.cyc allows user control of each parameter)
 y = gauss.quad.prob(m, dist="normal")$nodes #Load the constants for GH quadrature
 k = length(theta)
@@ -193,15 +193,15 @@ PdofCSt.T1or2 <- function(theta, T, d, m=20, tol=1e-8) {
 #as opposed to T>2 cases, where cases are excluded because of small
 #probability contributions.)
 #Calculate Pd(CSt) using the subroutine P(CSt)
-#Note: This version is identical to my original, except that require(utils) with "combn"
-#					replaces outdated    require(vsn) with "nchoosek"
+#Note: This version is identical to my original, except that #require(utils) with "combn"
+#					replaces outdated    #require(vsn) with "nchoosek"
 # theta is the vector of means
 # T is the number of populations desired for selection
 # d is the distance tolerance parameter, the innovative part
 #E.g. PdofCSt.T1or2(theta, T=2, d=0.3, m=20, tol=1e-8)
 
-require(utils)                 #Library for combn
-require(statmod)	       #Library for gauss.quad.prob
+#require(utils)                 #Library for combn
+#require(statmod)	       #Library for gauss.quad.prob
 y = gauss.quad.prob(m, dist="normal")$nodes #Load the constants for GH quadrature
 k = length(theta)
 cut1 = theta[k-T+1]-d-0.00000001  #Note: the 0.00000001 is a fudge factor to circumvent R's bug of theta[123]=1>=1=cut returning FALSE
@@ -253,8 +253,8 @@ PofCSGt <- function(theta, T, Gd, m=20, tol=1e-8) {
 # Gd is the number of additional populations admitted
 #E.g. PofCSGt(theta, T=2, Gd=2, m=20, tol=1e-6)
 
-require(utils)                   #Library for combn
-require(statmod)	       #Library for gauss.quad.prob
+#require(utils)                 #Library for combn
+#require(statmod)	       #Library for gauss.quad.prob
 y = gauss.quad.prob(m, dist="normal")$nodes #Load the constants for GH quadrature
 k = length(theta)
 
@@ -276,7 +276,8 @@ if (Gd > 0) {               #Statement should not run if Gd = 0; P(CSt) = p, d=0
 
     A.top = rep((k-T+1):k,times=R)
     A.top = matrix(A.top,R,length((k-T+1):k),byrow=TRUE)
-    A = cbind(A,A.top)
+    A = cbind(A,A.top)
+
 
     PdCSt = 0			#Initialize probability value
     for (r in 1:R) {
@@ -301,7 +302,7 @@ PofCSt <- function(theta, T, m, tol=1e-7) {
 #                                missing value where TRUE/FALSE needed"
 # E.g. PofCSt(theta, T, m)
 #################################################################
-require(statmod)       #Library for gauss.quad.prob
+#require(statmod)       #Library for gauss.quad.prob
 
 y = gauss.quad.prob(m, dist="normal")$nodes #Load the constants for GH quadrature
 k = length(theta)
@@ -356,7 +357,7 @@ c(PCSt, Qti)
 ##### 5 ########################################################
 G.H.Quad <- function(x, m) {
 # Performs Gauss-Hermite Quadrature for general m
-require(statmod)
+#require(statmod)
 weight = gauss.quad.prob(m, dist="normal")$weights
 res = sum(x*weight)
 res
@@ -746,7 +747,7 @@ Pvalue = 2*(1-pt(abs(T), df= df))  #computes p-value for t-statstic
 
 ### Various correction factors for multiple testing, using MULTTEST library
 if (flag != 0) {
-	library(multtest, verbose = FALSE)  #load the multtest library
+	#require(multtest)  #load the multtest library
 	procs <- c("Bonferroni", "Holm", "Hochberg", "SidakSS", "SidakSD", "BH", "BY")  #this sequence is taken directly from multtest documentation, p. 5
 	res <- mt.rawp2adjp(Pvalue, procs)
 	adjp <- res$adjp[order(res$index), ]
@@ -789,7 +790,7 @@ if (tol>0.01) warning("tol (tolerance parameter) is large and may admit gross er
 theta = sort(theta)          #Functions assume theta is ordered
 if (is.null(d)) {
 	if (length(theta) <= t+g) {out=1; warning("t+g >= length(theta), which implies PCS=1, necessarily"); return(out)}
-	out = PofCSGt(theta=theta, T=t, G=g, m=m, tol=tol)
+	out = PofCSGt(theta=theta, T=t, Gd=g, m=m, tol=tol)
 }  else {
 	if (length(theta) < 2) stop("theta must be a vector of length >= 2")
 	out = PdofCSt.cyc2(theta=theta, T=t, d=d, m=m, tol=tol)[2]

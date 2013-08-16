@@ -38,7 +38,7 @@ obtain PCS using the analytic formula.
 }
 
 \author{Jason Wilson
-Maintainer: <jason.wilson@biola.edu>
+Maintainer: Jason Wilson <jason.wilson@biola.edu>
 }
 
 \note{ I would like to thank Xinping Cui for her support while creating this package, Thomas Girke
@@ -82,22 +82,25 @@ X1 = rnorm(k*n,0,SD)   #Sample 1
 X1 = matrix(X1,nrow=k,ncol=n,byrow=FALSE)
 X2 = rnorm(k*n,theta,SD) #Sample 2, shifted
 X2 = matrix(X2,nrow=k,ncol=n,byrow=FALSE)
+T = c(1,2,3,5); G = 1:3; D = c(0.5,1,1.5)
 PCS.boot.np(X1, X2, T, G, D, B=100, trunc=6)
 
 ##### Microarray example of t-statistics with PCS.boot.par
-library(multtest)
-data(golub)  							#Load microarray data
-ans = tindep(golub[,1:27], golub[,28:38], flag=1)  	#Obtain t-statistics
-golub.T = sort(abs(ans[,1]))  				#Massage t-statistics
+require(multtest)
+data(golub)  	#Load microarray data
+sub = 500	#Subset index for speed
+ans = tindep(golub[1:sub,1:27], golub[1:sub,28:38], flag=1) #Obtain t-statistics
+golub.T = sort(abs(ans[,1]))  	#Massage t-statistics
 T=c(1,5,10,25,50,92); G=c(1,10,25,50,150); D=c(0,1,2) #Set PCS parameters
-df=18 								#Degrees of freedom from Satterthwaite approximation
-sde=sqrt((18/(18-2))/19) 					#Estimate SDE by method of moments SD, divided by mean sample size
-PCS.boot.par(golub.T, T, G, D, L=NULL, B=100, SDE=sde, dist="t", df=18) #Small bootstrap sample size for speed
+df=18 			  #Degrees of freedom from Satterthwaite approximation
+sde=sqrt((18/(18-2))/19)  #Estimate SDE by MOM SD, divided by mean sample size
+PCS.boot.par(golub.T, T, G, D, L=NULL, B=100, SDE=sde, dist="t", df=18) #Small B for speed
 
-##### Microarray example of Golub's correlation statistics (see reference) with PCS.boot.par
-library(multtest)
-data(golub)  							#Load microarray data
-Pgc <- function(x,y) {  					#Function to calculate Golub's correlation statistics
+##### Microarray example of Golub's correlation statistics
+##### (see reference) with PCS.boot.par
+require(multtest)
+data(golub)  					#Load microarray data
+Pgc <- function(x,y) {  		#Function to calculate Golub's correlation statistics
   xbar1 = apply(x,1,mean)
   xbar2 = apply(y,1,mean)
   sd1   = apply(x,1,sd)
@@ -105,14 +108,16 @@ Pgc <- function(x,y) {  					#Function to calculate Golub's correlation statisti
   Pgc = abs((xbar1-xbar2))/(sd1+sd2)
   return(Pgc)
 } #end function
-Pgc.gol = Pgc(golub[,1:27],golub[,28:38])			#Calculate correlation statistics
-T=c(1,5,10,25,50,92); G=c(1,10,25,50,150); D=c(0,1,2)	#Set PCS parameters
-sde=0.20 								#Obtained by simulation on Golub data
-PCS.boot.par(Pgc.gol, T, G, D, L=NULL, B=100, SDE=0.2, dist="t", df=18) #Small bootstrap sample size for speed
+sub = 500	#Subset index for speed
+Pgc.gol = Pgc(golub[1:sub,1:27],golub[1:sub,28:38]) #Calculate correlation statistics
+T=c(1,5,10,25,50,92); G=c(1,10,25,50,150); D=c(0,1,2) #Set PCS parameters
+sde=0.20 		#Obtained by simulation on Golub data
+PCS.boot.par(Pgc.gol, T, G, D, L=NULL, B=100, SDE=0.2, dist="t", df=18) #Small B for speed
 
 ##### Microarray example using non-parametric bootstrap
-library(multtest)
+require(multtest)
 data(golub)  							#Load microarray data
-T=c(1,5,10); G=c(1,3,5); D=c(0,1,2) 			#Set PCS parameters
-PCS.boot.np(golub[,1:27], golub[,28:38], T, G, D, B=10, trunc=6) #Small bootstrap sample size for speed
+T=c(1,5,10); G=c(1,3,5); D=c(0,1,2) 	#Set PCS parameters
+sub = 100	#Subset index for speed
+PCS.boot.np(golub[1:sub,1:27], golub[1:sub,28:38], T, G, D, B=10, trunc=6) #Small B for speed
 }

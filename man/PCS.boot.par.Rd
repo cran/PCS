@@ -10,34 +10,35 @@ The specific parameters (G,d,L), distributional assumptions (normal, Student's t
 and calculation method (exact, bootstrap) are user-settable. 
 }
 \usage{
-PCS.boot.par(theta, T = 1:1, G = NULL, D = NULL, L = NULL, B = 100, SDE = 1, dist = c("normal", "t"), df = 14, trunc = 6)
+PCS.boot.par(theta, T = 1:1, G = NULL, D = NULL, L = NULL, B = 100, SDE = 1, 
+	dist = c("normal", "t"), df = 14, trunc = 6)
 PCS.boot.np(X1, X2, T = 1, G = 1, D = NULL, B, trunc = 6)
 PCS.exact(theta, t = 1, g = NULL, d = NULL, m = 20, tol = 1e-08)
 }
 \arguments{
-  \item{theta}{ \code{theta} Vector of statistics (or parameters) from which it is desired to select 
+  \item{theta}{  Vector of statistics (or parameters) from which it is desired to select 
 			the top t of them }
-  \item{T}{ \code{T} Vector of the number of statistics (or parameters) desired to be selected }
-  \item{t}{ \code{t} The number of statistics (or parameters) desired to be selected (scalar) }
-  \item{G}{ \code{G} Vector of G-best selection parameters }
-  \item{g}{ \code{g} The G-best selection parameter (scalar) }
-  \item{D}{ \code{D} Vector of d-best selection parameters }
-  \item{d}{ \code{d} The d-best selection parameter (scalar) }
-  \item{L}{ \code{L} Vector of L-best selection parameters }
-  \item{X1}{ \code{X1} k by n1 matrix of data.  k is the number of populations and n1 the sample size 
+  \item{T}{  Vector of the number of statistics (or parameters) desired to be selected }
+  \item{t}{  The number of statistics (or parameters) desired to be selected (scalar) }
+  \item{G}{  Vector of G-best selection parameters }
+  \item{g}{  The G-best selection parameter (scalar) }
+  \item{D}{  Vector of d-best selection parameters }
+  \item{d}{  The d-best selection parameter (scalar) }
+  \item{L}{  Vector of L-best selection parameters }
+  \item{X1}{ k by n1 matrix of data.  k is the number of populations and n1 the sample size 
 		of the first treatment. }
-  \item{X2}{ \code{X2} k by n2 matrix of data.  k is the number of populations and n2 the sample size 
+  \item{X2}{ k by n2 matrix of data.  k is the number of populations and n2 the sample size 
 		of the second treatment. }
-  \item{B}{ \code{B} Bootstrap sample size }
-  \item{SDE}{ \code{SDE} Standard error of the statistics theta (row-wise) }
-  \item{dist}{ \code{dist} Distributional assumption used for estimating PCS }
-  \item{df}{ \code{df} Common degrees of freedom for one of the t-statistics in theta;
+  \item{B}{  Bootstrap sample size }
+  \item{SDE}{  Standard error of the statistics theta (row-wise) }
+  \item{dist}{  Distributional assumption used for estimating PCS }
+  \item{df}{  Common degrees of freedom for one of the t-statistics in theta;
 		the parameter is only used if dist="t" }
-  \item{trunc}{ \code{trunc} Number of standard errors below the minimum selected
+  \item{trunc}{  Number of standard errors below the minimum selected
 		population to disregard in the estimation of PCS; it is a truncation parameter
 		to decrease run time }
-  \item{m}{ \code{m} Number of nodes employed in the Gauss-Hermite quadrature }
-  \item{tol}{ \code{tol} Tolerance parameter to set the cut-off level for the inclusion of additional 
+  \item{m}{  Number of nodes employed in the Gauss-Hermite quadrature }
+  \item{tol}{  Tolerance parameter to set the cut-off level for the inclusion of additional 
 		probability components in PCS }
 }
 \details{
@@ -130,21 +131,21 @@ by Gene Expression Monitoring.  Science.  286:531-537.
 }
 
 \author{Jason Wilson
-Maintainer: <jason.wilson@biola.edu>
+Maintainer: Jason Wilson <jason.wilson@biola.edu>
 }
 
 \examples{
 ##### Small example for PCS.boot.par & PCS.exact
 theta = c(1.0, 1.5, 1.7, 2.3, 2.5, 4.2)
 T = c(1,2,3,5); G = 0:3; D = c(0.5,1,1.5); L = 1:2
-PCS.boot.par(theta, T, G, D, L, B=1000, SDE=1, dist="normal", trunc=6)
+PCS.boot.par(theta, T, G, D, L, B=100, SDE=1, dist="normal", trunc=6)
 PCS.exact(theta, t=2, g=1, d=NULL, m=20, tol=1e-8)
 
 #The above assumes the largest thetas are best.
 #To select the smallest thetas, reverse the order of the indices, e.g.
 theta.new = max(theta) - theta + min(theta)
 T = c(1,2,3,5); G = 0:3; D = c(0.5,1,1.5); L = 1:2
-PCS.boot.par(theta.new, T, G, D, L, B=1000, SDE=1, dist="normal", trunc=6)
+PCS.boot.par(theta.new, T, G, D, L, B=100, SDE=1, dist="normal", trunc=6)
 PCS.exact(theta.new, t=2, g=1, d=NULL, m=20, tol=1e-8)
 
 ##### Small example for PCS.boot.np
@@ -157,22 +158,24 @@ X1 = matrix(X1,nrow=k,ncol=n,byrow=FALSE)
 X2 = rnorm(k*n,theta,SD) #Sample 2, shifted
 X2 = matrix(X2,nrow=k,ncol=n,byrow=FALSE)
 T = c(1,2,3,5); G = 0:3; D = c(0.5,1,1.5); L = 1:2
-PCS.boot.np(X1, X2, T, G, D, B=1000, trunc=6)
+PCS.boot.np(X1, X2, T, G, D, B=10, trunc=6)
 
 ##### Microarray example of t-statistics with PCS.boot.par
-library(multtest)
-data(golub)  							#Load microarray data
-ans = tindep(golub[,1:27], golub[,28:38], flag=1)  	#Obtain t-statistics
-golub.T = sort(abs(ans[,1]))  				#Massage t-statistics
+require(multtest)
+data(golub)  	#Load microarray data
+sub = 500	#Subset index for speed
+ans = tindep(golub[1:sub,1:27], golub[1:sub,28:38], flag=1) #Obtain t-statistics
+golub.T = sort(abs(ans[,1]))  	#Massage t-statistics
 T=c(1,5,10,25,50,92); G=c(1,10,25,50,150); D=c(0,1,2) #Set PCS parameters
-df=18 								#Degrees of freedom from Satterthwaite approximation
-sde=sqrt((18/(18-2))/19) 					#Estimate SDE by method of moments SD, divided by mean sample size
-PCS.boot.par(golub.T, T, G, D, L=NULL, B=100, SDE=sde, dist="t", df=18) #Small bootstrap sample size for speed
+df=18 			  #Degrees of freedom from Satterthwaite approximation
+sde=sqrt((18/(18-2))/19)  #Estimate SDE by MOM SD, divided by mean sample size
+PCS.boot.par(golub.T, T, G, D, L=NULL, B=100, SDE=sde, dist="t", df=18) #Small B for speed
 
-##### Microarray example of Golub's correlation statistics (see reference) with PCS.boot.par
-library(multtest)
-data(golub)  							#Load microarray data
-Pgc <- function(x,y) {  					#Function to calculate Golub's correlation statistics
+##### Microarray example of Golub's correlation statistics
+##### (see reference) with PCS.boot.par
+require(multtest)
+data(golub)  					#Load microarray data
+Pgc <- function(x,y) {  		#Function to calculate Golub's correlation statistics
   xbar1 = apply(x,1,mean)
   xbar2 = apply(y,1,mean)
   sd1   = apply(x,1,sd)
@@ -180,16 +183,18 @@ Pgc <- function(x,y) {  					#Function to calculate Golub's correlation statisti
   Pgc = abs((xbar1-xbar2))/(sd1+sd2)
   return(Pgc)
 } #end function
-Pgc.gol = Pgc(golub[,1:27],golub[,28:38])			#Calculate correlation statistics
-T=c(1,5,10,25,50,92); G=c(1,10,25,50,150); D=c(0,1,2)	#Set PCS parameters
-sde=0.20 								#Obtained by simulation on Golub data
-PCS.boot.par(Pgc.gol, T, G, D, L=NULL, B=100, SDE=0.2, dist="t", df=18) #Small bootstrap sample size for speed
+sub = 500	#Subset index for speed
+Pgc.gol = Pgc(golub[1:sub,1:27],golub[1:sub,28:38]) #Calculate correlation statistics
+T=c(1,5,10,25,50,92); G=c(1,10,25,50,150); D=c(0,1,2) #Set PCS parameters
+sde=0.20 		#Obtained by simulation on Golub data
+PCS.boot.par(Pgc.gol, T, G, D, L=NULL, B=100, SDE=0.2, dist="t", df=18) #Small B for speed
 
 ##### Microarray example using non-parametric bootstrap
-library(multtest)
+require(multtest)
 data(golub)  							#Load microarray data
-T=c(1,5,10); G=c(1,3,5); D=c(0,1,2) 			#Set PCS parameters
-PCS.boot.np(golub[,1:27], golub[,28:38], T, G, D, B=10, trunc=6) #Small bootstrap sample size for speed
+T=c(1,5,10); G=c(1,3,5); D=c(0,1,2) 	#Set PCS parameters
+sub = 100	#Subset index for speed
+PCS.boot.np(golub[1:sub,1:27], golub[1:sub,28:38], T, G, D, B=10, trunc=6) #Small B for speed
 }
 
 \keyword{ htest }

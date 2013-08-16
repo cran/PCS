@@ -8,8 +8,8 @@
 G.H.Quad(x, m)
 }
 \arguments{
-  \item{x}{ \code{x} is an m-vector upon which Gauss-Hermite Quadrature is to be applied }
-  \item{m}{ \code{m} is the number of nodes desired for the Gauss-Hermite Quadrature }
+  \item{x}{  is an m-vector upon which Gauss-Hermite Quadrature is to be applied }
+  \item{m}{  is the number of nodes desired for the Gauss-Hermite Quadrature }
 }
 \details{ This function uses gauss.quad.prob in the statmod package to perform Gauss-Hermite 
 Quadrature inside of the PofCSt function. }
@@ -17,6 +17,5 @@ Quadrature inside of the PofCSt function. }
 \references{ Hildebrand, F.B.  1956.  Introduction to Numerical Analysis.  McGraw-Hill. }
 \author{ Jason Wilson, <jason.wilson@biola.edu> }
 \seealso{ \code{\link{PofCSt}} }
-\examples{ }
 
 \keyword{ math }

@@ -10,11 +10,11 @@ for use in PCS.exact and PCS.bootstrap.par.
 tindep(X, Y, flag = 0)
 }
 \arguments{
-  \item{X}{ \code{X} k by n1 matrix of data.  k is the number of populations and n1 the sample size 
+  \item{X}{  k by n1 matrix of data.  k is the number of populations and n1 the sample size 
 		of the first treatment. }
-  \item{Y}{ \code{Y} k by n2 matrix of data.  k is the number of populations and n2 the sample size 
+  \item{Y}{  k by n2 matrix of data.  k is the number of populations and n2 the sample size 
 		of the second treatment. }
-  \item{flag}{ \code{flag} Determines whether the output is t-statistics (flag=0) or t-statistics with p-values 
+  \item{flag}{  Determines whether the output is t-statistics (flag=0) or t-statistics with p-values 
 		(flag!=0) }
 }
 \details{
@@ -28,7 +28,7 @@ library is called, producing multiple comparison adjustd pvalues ("Bonferroni", 
   If flag = 0, the result is a k by 1 vector of t-statistics.
   If flag != 0, the result is a k by 7 vector of t-statistics and pvalues (see details).
 }
-\author{ Jason Wilson, <jason.wilson@biola.edu> }
+\author{ Jason Wilson <jason.wilson@biola.edu> }
 \seealso{ \code{\link{PCS.boot.np}}  }
 \examples{
 ### Small example
@@ -43,11 +43,12 @@ X2 = matrix(X2,nrow=k,ncol=n,byrow=FALSE)
 tindep(X1,X2, flag=1)
 
 ### Microarray example
-library(multtest)
+#require(multtest)
 data(golub)
-golub.Tp = tindep(golub[,1:27], golub[,28:38], flag=0) #Obtain t-statistics + p-values
+sub = 500 #Subset index for speed
+golub.Tp = tindep(golub[1:sub,1:27], golub[1:sub,28:38], flag=0) #Obtain t-statistics + p-values
 
-ans = tindep(golub[,1:27], golub[,28:38], flag=1)  #Obtain t-statistics
+ans = tindep(golub[1:sub,1:27], golub[1:sub,28:38], flag=1)  #Obtain t-statistics
 golub.T = sort(abs(ans[,1]))
 }
 
