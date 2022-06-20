@@ -1,6 +1,6 @@
 \name{PofCSLt.bootstrap5}
 \alias{PofCSLt.bootstrap5}
-\title{ Parametric bootstrap for computing L-best PCS }
+\title{ Parametric Bootstrap for Computing L-best PCS }
 \description{
   Parametric bootstrap for computing L-best PCS.  This function is called by the wrapper PCS.boot.np.
 }
@@ -30,9 +30,10 @@ PofCSLt.bootstrap5(theta, T, L, B, SDE, dist = c("normal", "t"),
 whose columns are the entries of T.
 }
 \references{ 
-Cui, X.; Zhao, H. and Wilson, J.  2008.  Optimization of Gene Selection in Microarray Experiments.  Submitted.
+Cui, X.; Zhao, H. and Wilson, J.  2010.  Optimized Ranking and Selection Methods for Feature Selection with Application in Microarray Experiments.  Journal of Biopharmaceutical Statistics.  Volume 20, No. 2, pp. 223-239.
+\url{ https://docs.google.com/a/biola.edu/viewer?a=v&pid=sites&srcid=YmlvbGEuZWR1fGphc29ud2lsc29ufGd4OjY0ZTJkNDNlMzNiNjE0ZDg }
 }
-\author{ Jason Wilson, <jason.wilson@biola.edu> }
+\author{ Jason Wilson <jason.wilson@biola.edu> }
 \seealso{ \code{\link{PCS.boot.par}} }
 
 \keyword{ htest }

@@ -1,6 +1,6 @@
 \name{PdCSGt.bootstrap.NP2}
 \alias{PdCSGt.bootstrap.NP2}
-\title{ Non-parametric bootstrap for computing G-best and d-best PCS }
+\title{ Non-Parametric Bootstrap for Computing G-best and d-best PCS }
 \description{
   Non-parametric bootstrap for computing G-best and d-best PCS.  This function is called by the wrapper PCS.boot.np. 
 }
@@ -29,9 +29,9 @@ where the $G element is the G-best matrix, the $d element is the d-best matrix.
 \references{ 
 Cui, X. and Wilson, J.  2009.  A Simulation Study on the Probability of Correct Selection for Large k Populations.  
 Communications in Statistics: Simulation and Computation.  38:6.
-\url{ http://www.bubbs.biola.edu/~jason.wilson/Article2_sim_revised02.pdf }
+\url{ https://docs.google.com/a/biola.edu/viewer?a=v&pid=sites&srcid=YmlvbGEuZWR1fGphc29ud2lsc29ufGd4OjMxYTdjNjJkNzY3NTU4NzA }
 }
-\author{ Jason Wilson, <jason.wilson@biola.edu> }
+\author{ Jason Wilson <jason.wilson@biola.edu> }
 \seealso{ \code{\link{PCS.boot.np}} }
 
 \keyword{ htest }

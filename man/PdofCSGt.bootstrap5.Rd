@@ -1,6 +1,6 @@
 \name{PdofCSGt.bootstrap5}
 \alias{PdofCSGt.bootstrap5}
-\title{ Parametric bootstrap for computing G-best and d-best PCS }
+\title{ Parametric Bootstrap for Computing G-best and d-best PCS }
 \description{
   Parametric bootstrap for computing G-best and d-best PCS.  This function is called by the wrapper PCS.boot.par.
 }
@@ -34,9 +34,9 @@ where the $G element is the G-best matrix, the $d element is the d-best matrix.
 \references{ 
 Cui, X. and Wilson, J.  2007.  On How to Calculate the Probability of Correct Selection for Large k 
 Populations.  University of California, Riverside Statistics Department Technical Report 297.
-\url{ http://www.bubbs.biola.edu/~jason.wilson/Article2_tech_techreport.pdf }
+\url{ https://docs.google.com/a/biola.edu/viewer?a=v&pid=sites&srcid=YmlvbGEuZWR1fGphc29ud2lsc29ufGd4OjJmYTY2YTJjY2EwYjg2ZmY }
 }
-\author{ Jason Wilson, <jason.wilson@biola.edu> }
+\author{ Jason Wilson <jason.wilson@biola.edu> }
 \seealso{ \code{\link{PCS.boot.par}} }
 
 \keyword{ htest }

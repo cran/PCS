@@ -15,7 +15,7 @@ G.H.Quad(x, m)
 Quadrature inside of the PofCSt function. }
 \value{ The result of the Gauss-Hermite Quadrature. }
 \references{ Hildebrand, F.B.  1956.  Introduction to Numerical Analysis.  McGraw-Hill. }
-\author{ Jason Wilson, <jason.wilson@biola.edu> }
+\author{ Jason Wilson <jason.wilson@biola.edu> }
 \seealso{ \code{\link{PofCSt}} }
 
 \keyword{ math }

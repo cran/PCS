@@ -37,7 +37,7 @@ necessary sample size, see (Cui & Wilson 2009).  When k is small to moderate, PC
 obtain PCS using the analytic formula. 
 }
 
-\author{Jason Wilson
+\author{Jason Wilson,
 Maintainer: Jason Wilson <jason.wilson@biola.edu>
 }
 
@@ -49,17 +49,18 @@ the help on the way.
 \references{
 Cui, X. and Wilson, J.  2007.  On How to Calculate the Probability of Correct Selection for Large k 
 Populations.  University of California, Riverside Statistics Department Technical Report 297.
-\url{ http://www.bubbs.biola.edu/~jason.wilson/Article2_tech_techreport.pdf }
+\url{ https://docs.google.com/a/biola.edu/viewer?a=v&pid=sites&srcid=YmlvbGEuZWR1fGphc29ud2lsc29ufGd4OjJmYTY2YTJjY2EwYjg2ZmY }
 \cr
 Cui, X. and Wilson, J.  2008.  On the Probability of Correct Selection for Large k Populations, 
 with Application to Microarray Data.  Biometrical Journal, 50:5, 870-883.
-\url{ http://www.bubbs.biola.edu/~jason.wilson/Article1_Revision.pdf }
+\url{ https://docs.google.com/a/biola.edu/viewer?a=v&pid=sites&srcid=YmlvbGEuZWR1fGphc29ud2lsc29ufGd4OjE2YjI4MGRkNzA0ZTRjMDc }
 \cr
 Cui, X. and Wilson, J.  2009.  A Simulation Study on the Probability of Correct Selection for Large k Populations.  
 Communications in Statistics - Simulation and Computation, 38:6.
-\url{ http://www.bubbs.biola.edu/~jason.wilson/Article2_sim_revised02.pdf }
+\url{ https://docs.google.com/a/biola.edu/viewer?a=v&pid=sites&srcid=YmlvbGEuZWR1fGphc29ud2lsc29ufGd4OjMxYTdjNjJkNzY3NTU4NzA }
 \cr
-Cui, X.; Zhao, H. and Wilson, J.  Optimization of Gene Selection in Microarray Experiments.  2008.  Submitted.
+Cui, X.; Zhao, H. and Wilson, J.  2010.  Optimized Ranking and Selection Methods for Feature Selection with Application in Microarray Experiments.  Journal of Biopharmaceutical Statistics.  Volume 20, No. 2, pp. 223-239.
+\url{https://docs.google.com/a/biola.edu/viewer?a=v&pid=sites&srcid=YmlvbGEuZWR1fGphc29ud2lsc29ufGd4OjY0ZTJkNDNlMzNiNjE0ZDg}
 }
 
 \keyword{ htest }

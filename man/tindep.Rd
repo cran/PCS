@@ -1,6 +1,6 @@
 \name{tindep}
 \alias{tindep}
-\title{ Standardized scores for two independent samples }
+\title{ Standardized Scores for Two Independent Samples }
 \description{
   Calculate the independent two-sample Welch t-statistics for k populations simultaneously. 
 This function is used in PCS.bootstrap.np.  It may also be used to summarize data from two sample experiments 

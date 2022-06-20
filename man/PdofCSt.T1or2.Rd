@@ -2,7 +2,7 @@
 \alias{PdofCSt.T1or2}
 \alias{PdofCSt.cyc2}
 \alias{PofCSGt}
-\title{ Exact PCS, when selecting t=1 or t=2 or more populations }
+\title{ Exact PCS, When Selecting t=1 or t=2 or More Populations }
 \description{
   PdofCSt.T1or2 calls PofCSt to implement the d-best PCS formula for the case of t=1 or t=2 
 populations.  It is called by PdofCSt.cyc2, which implements the d-best PCS formula for 
@@ -29,9 +29,9 @@ PofCSGt(theta, T, Gd, m = 20, tol = 1e-08)
 \references{ 
 Cui, X. and Wilson, J.  2007.  On How to Calculate the Probability of Correct Selection for Large k 
 Populations.  University of California, Riverside Statistics Department Technical Report 297.
-\url{ http://www.bubbs.biola.edu/~jason.wilson/Article2_tech_techreport.pdf }
+\url{ https://docs.google.com/a/biola.edu/viewer?a=v&pid=sites&srcid=YmlvbGEuZWR1fGphc29ud2lsc29ufGd4OjJmYTY2YTJjY2EwYjg2ZmY }
 }
-\author{ Jason Wilson, <jason.wilson@biola.edu> }
+\author{ Jason Wilson <jason.wilson@biola.edu> }
 \seealso{ \code{\link{PofCSt}}, \code{\link{PdofCSt.T1or2}}, \code{\link{PdofCSt.cyc2}}, \code{\link{PofCSGt}}  }
 
 \keyword{ htest }
